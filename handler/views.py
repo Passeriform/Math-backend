@@ -10,14 +10,14 @@ def OutputLevelForMaxProfit(cost_str, price_str):
     prelim = list(dict())
     prelim.append({
         "type": "MathMsg",
-        "message": f'''The firm produces at \
-            {latex(Symbol('MC'))}={latex(Symbol('P'))} \
-            to maximize profit.'''})
+        "message": f'''"The firm produces at "\
+            {latex(Symbol('MC'))}={latex(Symbol('P'))}\
+            "to maximize profit."'''})
 
     prelim.append({
         "type": "MathMsg",
         "message": f'''{latex(Symbol('MC'))}=\
-            {latex(Symbol('Marginal Cost'))} and \
+            {latex(Symbol('Marginal Cost'))}\" and \"\
             {latex(Symbol('P'))}={latex(Symbol('Price'))}'''})
 
     ###########################################################################
@@ -25,8 +25,8 @@ def OutputLevelForMaxProfit(cost_str, price_str):
     root_output = list(dict())
     root_output.append({
         "type": "MathMsg",
-        "message": f'''{latex(Symbol('MC'))} is the change in total cost or its \
-            function. Its found by taking the first order differential.'''})
+        "message": f'''{latex(Symbol('MC'))}" is the change in total cost or its \
+            function. Its found by taking the first order differential."'''})
 
     transformations = (standard_transformations +
                        (implicit_multiplication_application, convert_xor,))
@@ -77,14 +77,14 @@ def OutputLevelForMaxProfit(cost_str, price_str):
     root_result = list(dict())
     root_result.append({
         "type": "MathMsg",
-        "message": ' and '.join([f"""{latex(wrt_sym)}=\
-            {latex(inflection_pt['root'])}, then \
-            {latex(Symbol('MC'))} is {inflection_pt['delta']}""" \
+        "message": '\" and \"'.join([f'''{latex(wrt_sym)}=\
+            {latex(inflection_pt['root'])}", then "\
+            {latex(Symbol('MC'))}" is "{inflection_pt['delta']}''' \
             for inflection_pt in inflection])})
 
     root_result.append({
         "type": "MathMsg",
-        "message": f'''So, the profit it maximum at \
+        "message": f'''"So, the profit it maximum at "\
             {latex(wrt_sym)}={latex(max_p_pt)} units.'''})
 
     ###########################################################################
