@@ -95,8 +95,8 @@ def OutputLevelForMaxProfit(cost_str, price_str):
 
     formula = Symbol('C')/wrt_sym * Derivative(wrt_sym, Symbol('C'))
     subs_sym = formula.subs(
-        Derivative(wrt_sym, Symbol('C')), 1/Derivative(cost, wrt_sym)).evalf()
-    subs_vals = subs_sym.subs([(Symbol('C'), cost), (wrt_sym, max_p_pt)])
+        Derivative(wrt_sym, Symbol('C')), 1/Derivative(cost, wrt_sym))
+    subs_vals = subs_sym.subs(Symbol('C'), cost).subs(Derivative(cost, wrt_sym), marginal_cost)
 
     result = (cost/(wrt_sym * diff(cost, wrt_sym))).subs(wrt_sym, max_p_pt).evalf()
 
